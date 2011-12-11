@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>forget.me.not!</title>
+  <%= render 'layouts/stylesheets'%>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <h1><%= image_tag("fmn1.jpg",) %></h1>
+    <hr/>
+    
+  <div>      
+   <% if current_user %>
+   <h5>     
+       <%= link_to "Log out", log_out_path %>
+   <% else %>
+        <%= link_to "Sign up", sign_up_path %> or
+        <%= link_to "Login", log_in_path %>
+      <% end %>
+   </h5>
+  </div>
+  
+  <% if current_user %>
+    <nav>
+	    <p>
+      <%= image_tag("fmn2.jpg",) %>
+      </p>
+      <ul_b>
+      <li><%= link_to "Create Message", new_message_path %></li>
+      <li><%= link_to "Manage Messages", view_messages_path %></li>
+      </ul_b>
+      <%= image_tag("forgetlogo2.jpg",) %>
+    </nav>
+  <% else %>
+    <nav>
+	    <p>
+      Sign up Already! <br />      
+      Have an important date? <br />
+      Can't be late? <br />
+      <h1>forget.me.not!</h1>
+      </p>
+      <%= image_tag("forgetlogo2.jpg",) %>
+    <nav>
+  <% end %>    
+  </header>
+  
+  <% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+  
+   
+  <%= yield %>
+  
+  
+  <footer>  
+    <% if current_user %>
+         Logged in as <%= current_user.email %>
+    <% end %>     
+  </footer>
+</body>
+</html>

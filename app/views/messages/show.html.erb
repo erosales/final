@@ -1,0 +1,36 @@
+<section>
+<article>
+
+<header>
+<h1>Showing Message:</h1>	
+</header>	
+	
+	
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @message.date %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @message.time %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @message.text %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @message.phone %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>
+
+</section>
+</article>
